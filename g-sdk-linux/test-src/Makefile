@@ -1,14 +1,16 @@
 # OS, DISTRO, MACHINE
-OS := $(shell uname -s)
-ifeq ($(OS), Linux)
-	ifneq (,$(wildcard /etc/os-release))
-		DISTRO := $(shell cat /etc/os-release | awk -F= '/^ID\=/{print $$2}' | sed 's/\"//g')
-	else
-		DISTRO := $(shell head -1 /etc/issue | awk '{print $$1}')
-	endif
-	MACHINE := $(shell uname -m)
-	SDKLIBPATH := /$(DISTRO)-$(MACHINE)
-endif
+#OS := $(shell uname -s)
+#ifeq ($(OS), Linux)
+#	ifneq (,$(wildcard /etc/os-release))
+#		DISTRO := $(shell cat /etc/os-release | awk -F= '/^ID\=/{print $$2}' | sed 's/\"//g')
+#	else
+#		DISTRO := $(shell head -1 /etc/issue | awk '{print $$1}')
+#	endif
+#	MACHINE := $(shell uname -m)
+#	SDKLIBPATH := /$(DISTRO)-$(MACHINE)
+#endif
+
+SDKLIBPATH := /poky-aud-systemd-aarch64
 
 # Set to use Gnu debugger
 GDB_FLAG = -g -O3
