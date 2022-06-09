@@ -10,13 +10,16 @@
 #	SDKLIBPATH := /$(DISTRO)-$(MACHINE)
 #endif
 
-SDKLIBPATH := /poky-aud-systemd-aarch64
+#SDKLIBPATH := /poky-aud-systemd-aarch64
+SDKLIBPATH := /arm-cortex-a53_a13x
 
 # Set to use Gnu debugger
 GDB_FLAG = -g -O3
 
-CFG_INC = -I../include -I/usr/include -I/usr/local/include -I/usr/local/include/cjson
-LIB_PATH = -L/usr/local/lib -L/usr/lib64 -L../lib$(SDKLIBPATH)
+#CFG_INC = -I../include -I/usr/include -I/usr/local/include -I/usr/local/include/cjson
+#LIB_PATH = -L/usr/local/lib -L/usr/lib64 -L../lib$(SDKLIBPATH)
+CFG_INC = -I../include
+LIB_PATH = -L/usr/local/lib
 
 # Initialize other variables
 OUTDIR  = .
@@ -25,16 +28,16 @@ OUTFILE = $(OUTDIR)/ginside-test
 
 DEBUG_FLAG = -Wall -DLINUX # -DDEBUG
 
-LIB = -lpthread -lcjson -lginside -lKwsRnet
+LIB = -lpthread -lcjson -lginside -lKwsRnet -lssl -lprotobuf -lgrpc++
 
 OBJ =	$(OBJDIR)/ginside-test.o     \
 		$(OBJDIR)/test_api.o         \
 		$(OBJDIR)/base64.o           \
 		$(OBJDIR)/agent_callback.o
 
-COMPILE = g++ -w -c $(GDB_FLAG) $(DEBUG_FLAG) -o "$(OUTDIR)/$(*F).o" $(CFG_INC) \
+COMPILE = $(CXX) -w -c $(GDB_FLAG) $(DEBUG_FLAG) -o "$(OUTDIR)/$(*F).o" $(CFG_INC) \
 			"$<"
-LINK = g++ $(GDB_FLAG) -o "$(OUTFILE)" $(OBJ) $(CFG_LIB) $(LIB_PATH) $(LIB)
+LINK = ${CXX} $(GDB_FLAG) -o "$(OUTFILE)" $(OBJ) $(CFG_LIB) $(LIB_PATH) $(LIB)
 
 # Pattern rules
 

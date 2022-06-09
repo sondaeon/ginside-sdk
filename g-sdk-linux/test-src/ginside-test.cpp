@@ -33,7 +33,7 @@ SOFTWARE.
 #include  "test_api.h"
 #include  "agent_callback.h"
 #include  "base64.h"
-#include  "cJSON.h"
+#include  "cjson/cJSON.h"
 
 void usage()
 {

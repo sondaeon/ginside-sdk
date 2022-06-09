@@ -27,7 +27,7 @@ SOFTWARE.
 #include "sys/time.h"
 #include <string>
 #include "agent_callback.h"
-#include "cJSON.h"
+#include "cjson/cJSON.h"
 #include "ginside.h"
 #include "ginsidedef.h"
 #include "base64.h"

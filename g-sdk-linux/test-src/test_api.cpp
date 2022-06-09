@@ -32,7 +32,7 @@ SOFTWARE.
 #endif
 
 #include  "stdlib.h"
-#include  "cJSON.h"
+#include  "cjson/cJSON.h"
 #include  "test_api.h"
 
 #include  "agent_callback.h"
