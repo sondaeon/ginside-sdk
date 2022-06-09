@@ -19,7 +19,7 @@ GDB_FLAG = -g -O3
 #CFG_INC = -I../include -I/usr/include -I/usr/local/include -I/usr/local/include/cjson
 #LIB_PATH = -L/usr/local/lib -L/usr/lib64 -L../lib$(SDKLIBPATH)
 CFG_INC = -I../include
-LIB_PATH = -L/usr/local/lib
+LIB_PATH = -L../lib$(SDKLIBPATH)
 
 # Initialize other variables
 OUTDIR  = .
